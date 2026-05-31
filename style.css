@@ -1183,77 +1183,178 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transform: translateY(-3px);
 }
 
-/* Contact Form */
+/* Contact Form Wrap (Google Form CTA) */
 .contact-form-wrap {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
-  padding: 1rem;
+  padding: 0;
   backdrop-filter: blur(20px);
+  overflow: hidden;
 }
 
-.contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
 
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-
-.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-
-.form-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-sec);
-  letter-spacing: 0.5px;
+/* ── GOOGLE FORM CTA PANEL ── */
+.gform-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
 }
-.form-input {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  padding: 0.85rem 1.1rem;
-  color: var(--white);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  outline: none;
-  transition: var(--transition);
-  resize: none;
-}
-.form-input::placeholder { color: var(--text-mute); }
-.form-input:focus {
-  border-color: var(--cyan);
-  background: rgba(0,229,255,0.04);
-  box-shadow: 0 0 0 3px rgba(0,229,255,0.08);
-}
-.form-input.error { border-color: #ef4444; }
-.form-error { font-size: 0.75rem; color: #ef4444; min-height: 1em; }
-.form-textarea { min-height: 140px; }
-
-.btn-loader {
-  display: none;
-  width: 18px; height: 18px;
-  border: 2px solid rgba(5,5,5,0.3);
-  border-top-color: var(--bg);
+.gform-cta::before {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
+  background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+  top: -80px; right: -80px;
+  pointer-events: none;
 }
-.btn-primary.loading .btn-text { display: none; }
-.btn-primary.loading .btn-loader { display: block; }
+.gform-cta::after {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%);
+  bottom: -60px; left: -60px;
+  pointer-events: none;
+}
 
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.form-success {
-  display: none;
+/* Icon with pulse ring */
+.gform-icon-wrap {
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.25rem;
-  background: rgba(0,229,255,0.08);
-  border: 1px solid rgba(0,229,255,0.25);
-  border-radius: var(--radius-md);
-  color: var(--cyan);
-  font-size: 0.9rem;
-  font-weight: 500;
-  animation: fade-up-in 0.4s ease;
+  justify-content: center;
+  width: 72px; height: 72px;
 }
-.form-success.show { display: flex; }
-.form-success i { font-size: 1.2rem; }
+.gform-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 32px rgba(0,229,255,0.3);
+}
+.gform-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,229,255,0.35);
+  animation: gform-pulse-ring 2s ease-in-out infinite;
+}
+@keyframes gform-pulse-ring {
+  0%,100% { transform: scale(0.9); opacity: 0.8; }
+  50%      { transform: scale(1.12); opacity: 0.25; }
+}
+
+.gform-heading {
+  font-family: var(--font-head);
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--white);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+.gform-sub {
+  font-size: 0.9rem;
+  color: var(--text-sec);
+  line-height: 1.75;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Checklist */
+.gform-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+.gform-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  color: var(--text-sec);
+  font-weight: 500;
+}
+.gform-checklist li i { color: var(--cyan); font-size: 0.9rem; flex-shrink: 0; }
+
+/* Action buttons */
+.gform-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.gform-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.75rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  text-decoration: none;
+  flex: 1;
+}
+.gform-btn--primary {
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0,229,255,0.25);
+}
+.gform-btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(0,229,255,0.4);
+}
+.gform-btn--ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+}
+.gform-btn--ghost:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+  background: var(--purple-dim);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(139,92,246,0.2);
+}
+
+/* Privacy note */
+.gform-note {
+  font-size: 0.78rem;
+  color: var(--text-mute);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  z-index: 1;
+  opacity: 0.75;
+}
+.gform-note i { color: var(--cyan); font-size: 0.8rem; }
+
 
 /* ── FOOTER ── */
 .footer {
