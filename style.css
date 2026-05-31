@@ -59,7 +59,13 @@ body {
   color-scheme: light;
 }
 
-img { display: block; max-width: 100%; height: auto; }
+img { width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  transition: var(--transition);
+  flex-shrink: 0;}
 a  { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
