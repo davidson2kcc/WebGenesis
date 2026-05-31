@@ -24,17 +24,24 @@
   <title>WebGenesis | Premium Web Development Agency</title>
   <link rel="canonical" href="https://webgenesis.dev/" />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="Logo.jpg" />
+
+  <!-- Preload critical assets -->
+  <link rel="preload" href="Logo.jpg" as="image" />
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Icons (async – non-render-blocking) -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
 
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <!-- AOS (async) -->
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /></noscript>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
@@ -55,16 +62,18 @@
     </div>
   </div>
 
-  <!-- ========== NAVBPK ========== -->
+  <!-- ========== NAV OVERLAY ========== -->
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <!-- ========== NAVBAR ========== -->
   <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a href="#home" class="nav-logo" id="navLogo" aria-label="WebGenesis home">
-        <img src="Logo.png" alt="WebGenesis Logo" class="nav-logo-img" />
+        <img src="Logo.jpg" alt="WebGenesis Logo" class="nav-logo-img" width="42" height="42" fetchpriority="high" loading="eager" />
         <span class="nav-brand">
           <span class="nav-brand-web">Web</span><span class="nav-brand-genesis">Genesis</span>
         </span>
       </a>
-      <link rel="icon" type="image/png" href="Logo.png" />
       <ul class="nav-menu" id="navMenu" role="list">
         <li><a href="#home" class="nav-link active" id="navHome">Home</a></li>
         <li><a href="#about" class="nav-link" id="navAbout">About</a></li>
@@ -153,7 +162,7 @@
         <div class="dev-card" id="devCard1" data-aos="fade-up" data-aos-delay="100">
           <div class="dev-card-glow dev-card-glow--cyan"></div>
           <div class="dev-avatar-wrap">
-            <img src="circle-user-round.svg" alt="Praveenkumar A – Full Stack Developer" class="dev-avatar" loading="lazy" />
+            <img src="circle-user-round.svg" alt="Praveenkumar A – Full Stack Developer" class="dev-avatar" width="140" height="140" loading="lazy" />
             <div class="dev-avatar-ring"></div>
             <div class="dev-status">
               <span class="dev-status-dot"></span> Available
@@ -204,7 +213,7 @@
         <div class="dev-card" id="devCard2" data-aos="fade-up" data-aos-delay="200">
           <div class="dev-card-glow dev-card-glow--purple"></div>
           <div class="dev-avatar-wrap">
-            <img src="circle-user-round.svg" alt="Aravind S – Frontend Developer" class="dev-avatar" loading="lazy" />
+            <img src="circle-user-round.svg" alt="Dharshan A – Frontend Developer" class="dev-avatar" width="140" height="140" loading="lazy" />
             <div class="dev-avatar-ring dev-avatar-ring--purple"></div>
             <div class="dev-status">
               <span class="dev-status-dot"></span> Available
@@ -272,7 +281,7 @@
           <!-- Panel Header -->
           <div class="dev-skill-header dev-skill-header--cyan">
             <div class="dev-skill-avatar">
-              <img src="circle-user-round.svg" alt="Praveenkumar A" class="dev-skill-avatar-img" />
+              <img src="circle-user-round.svg" alt="Praveenkumar A" class="dev-skill-avatar-img" width="34" height="34" loading="lazy" />
             </div>
             <div>
               <h3 class="dev-skill-name">Praveenkumar A</h3>
@@ -382,7 +391,7 @@
           <!-- Panel Header -->
           <div class="dev-skill-header dev-skill-header--purple">
             <div class="dev-skill-avatar dev-skill-avatar--purple">
-              <img src="circle-user-round.svg" alt="Dharshan A" class="dev-skill-avatar-img" />
+              <img src="circle-user-round.svg" alt="Dharshan A" class="dev-skill-avatar-img" width="34" height="34" loading="lazy" />
             </div>
             <div>
               <h3 class="dev-skill-name">Dharshan A</h3>
@@ -500,7 +509,7 @@
         <!-- Project 1 -->
         <article class="project-card" id="projectGym" data-aos="fade-up" data-aos-delay="100">
           <div class="project-img-wrap">
-            <img src="project-gym.png" alt="Gym Website Project Preview" class="project-img" loading="lazy" />
+            <img src="project-gym.jpg" alt="Gym Website Project Preview" class="project-img" width="600" height="400" loading="lazy" />
             <div class="project-overlay">
               <div class="project-links">
                 <a href="https://eternalpantheongym.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-btn" id="gymLiveBtn" aria-label="Gym website live demo">
@@ -528,7 +537,7 @@
         <!-- Project 2 -->
         <article class="project-card" id="projectConstruction" data-aos="fade-up" data-aos-delay="150">
           <div class="project-img-wrap">
-            <img src="project-construction.png" alt="Construction Company Website Preview" class="project-img" loading="lazy" />
+            <img src="project-construction.jpg" alt="Construction Company Website Preview" class="project-img" width="600" height="400" loading="lazy" />
             <div class="project-overlay">
               <div class="project-links">
                 <a href="https://buildcraftpro.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-btn" id="constructionLiveBtn" aria-label="Construction website live demo">
@@ -559,7 +568,7 @@
         <!-- Project 4 -->
         <article class="project-card" id="projectPortfolio" data-aos="fade-up" data-aos-delay="250">
           <div class="project-img-wrap">
-            <img src="project-portfolio.png" alt="Portfolio Website Preview" class="project-img" loading="lazy" />
+            <img src="project-portfolio.jpg" alt="Portfolio Website Preview" class="project-img" width="600" height="400" loading="lazy" />
             <div class="project-overlay">
               <div class="project-links">
                 <a href="#" target="_blank" rel="noopener noreferrer" class="proj-btn" id="portfolioLiveBtn" aria-label="Portfolio live demo">
@@ -707,7 +716,7 @@
               <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-pill" id="contactGithub" aria-label="GitHub profile">
                 <i class="fab fa-github"></i> GitHub
               </a>
-              <a href="mailto:alex@example.com" class="social-icon" id="heroEmail" aria-label="Email"><i class="fas fa-envelope"></i></a>
+              <a href="mailto:webgenesis34@gmail.com" class="social-icon" id="contactSocialEmail" aria-label="Email"><i class="fas fa-envelope"></i></a>
               
             </div>
           </div>
@@ -756,8 +765,8 @@
   <footer class="footer" role="contentinfo">
     <div class="footer-container">
       <div class="footer-top">
-        <a href="#home" class="footer-logo"id="footer-logo" aria-label="Back to top">
-          <img src="Logo.png" alt="PK Logo" class="footer-logo-img" />
+        <a href="#home" class="footer-logo" id="footer-logo" aria-label="Back to top">
+          <img src="Logo.jpg" alt="WebGenesis Logo" class="footer-logo-img" width="42" height="42" loading="lazy" />
         </a>
 
         <p class="footer-tagline">Origin of great websites.</p>
@@ -790,8 +799,6 @@
 
   <!-- ========== SCRIPTS ========== -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>
