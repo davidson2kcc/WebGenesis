@@ -59,13 +59,8 @@ body {
   color-scheme: light;
 }
 
-img { width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  transition: var(--transition);
-  flex-shrink: 0;}
+img { display: block; max-width: 100%; height: auto; }
+
 a  { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
@@ -258,7 +253,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .nav-logo:hover .nav-logo-img {
   transform: scale(1.08);
-  box-shadow: 0 0 0 2px #000;
+  box-shadow: 0 0 0 2px #ffffff;
 }
 
 /* ── Brand wordmark ── */
@@ -1029,13 +1024,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .project-img-wrap {
   position: relative;
   overflow: hidden;
-  height: 100x;
-  aspect-ratio: var(--radius-full);
+  width: 100%;
 }
 .project-card--wide .project-img-wrap { aspect-ratio: auto; }
 
 .project-img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
   object-fit: contain;
   transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
 }
@@ -1404,7 +1400,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     backdrop-filter: blur(2px);
     animation: fade-overlay 0.3s ease;
   }
-  .nav-overlay.open { display: content; }
+  .nav-overlay.open { display: contents; }
   @keyframes fade-overlay {
     from { opacity: 0; }
     to   { opacity: 1; }
