@@ -1,8 +1,3 @@
-/* ===================================================
-   ALEX RIVERA – PORTFOLIO JAVASCRIPT
-   GSAP | AOS | Particles | Typed | Interactions
-=================================================== */
-
 'use strict';
 
 /* ──────────────────────────────────
@@ -10,135 +5,136 @@
 ────────────────────────────────── */
 const loader = document.getElementById('loader');
 
+// Prevent scrolling while loading
+document.body.style.overflow = 'hidden';
+
 window.addEventListener('load', () => {
   setTimeout(() => {
     loader.classList.add('hidden');
     document.body.style.overflow = 'auto';
-    initHeroAnimations();
   }, 300);
 });
 
-// Prevent scrolling while loading
-document.body.style.overflow = 'hidden';
+
+/* ──────────────────────────────────
+   2. CUSTOM CURSOR (desktop only)
+────────────────────────────────── */
+const isTouch = window.matchMedia('(hover: none)').matches;
+
+if (!isTouch) {
+  const cursor         = document.getElementById('cursor');
+  const cursorFollower = document.getElementById('cursorFollower');
+
+  let mouseX = 0, mouseY = 0;
+  let followerX = 0, followerY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top  = mouseY + 'px';
+  });
+
+  (function followCursor() {
+    followerX += (mouseX - followerX) * 0.1;
+    followerY += (mouseY - followerY) * 0.1;
+    cursorFollower.style.left = followerX + 'px';
+    cursorFollower.style.top  = followerY + 'px';
+    requestAnimationFrame(followCursor);
+  })();
+
+  const hoverTargets = document.querySelectorAll('a, button, .skill-card, .project-card, .contact-card, .stat-card');
+  hoverTargets.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('hover');
+      cursorFollower.classList.add('hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+      cursorFollower.classList.remove('hover');
+    });
+  });
+}
 
 
 /* ──────────────────────────────────
-   2. CUSTOM CURSOR
+   3. PARTICLE CANVAS (desktop only)
 ────────────────────────────────── */
-const cursor         = document.getElementById('cursor');
-const cursorFollower = document.getElementById('cursorFollower');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-let mouseX = 0, mouseY = 0;
-let followerX = 0, followerY = 0;
+if (!isMobile && !prefersReducedMotion) {
+  (function initParticles() {
+    const canvas = document.getElementById('particleCanvas');
+    const ctx    = canvas.getContext('2d');
+    let W, H;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursor.style.left = mouseX + 'px';
-  cursor.style.top  = mouseY + 'px';
-});
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
 
-// Smooth follower
-(function followCursor() {
-  followerX += (mouseX - followerX) * 0.1;
-  followerY += (mouseY - followerY) * 0.1;
-  cursorFollower.style.left = followerX + 'px';
-  cursorFollower.style.top  = followerY + 'px';
-  requestAnimationFrame(followCursor);
-})();
+    const PARTICLE_COUNT = 20;
 
-// Hover effect on interactive elements
-const hoverTargets = document.querySelectorAll('a, button, .skill-card, .project-card, .contact-card, .stat-card');
-hoverTargets.forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.classList.add('hover');
-    cursorFollower.classList.add('hover');
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.classList.remove('hover');
-    cursorFollower.classList.remove('hover');
-  });
-});
-
-
-/* ──────────────────────────────────
-   3. PARTICLE CANVAS
-────────────────────────────────── */
-(function initParticles() {
-  const canvas = document.getElementById('particleCanvas');
-  const ctx    = canvas.getContext('2d');
-
-  let W, H, particles;
-
-  function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  const PARTICLE_COUNT = 35;
-
-  class Particle {
-    constructor() { this.reset(true); }
-
-    reset(initial) {
-      this.x     = Math.random() * W;
-      this.y     = initial ? Math.random() * H : H + 10;
-      this.size  = Math.random() * 1.5 + 0.3;
-      this.speedY = -(Math.random() * 0.4 + 0.15);
-      this.speedX = (Math.random() - 0.5) * 0.2;
-      this.opacity = Math.random() * 0.5 + 0.1;
-      this.color   = Math.random() > 0.5 ? '#00e5ff' : '#8b5cf6';
+    class Particle {
+      constructor() { this.reset(true); }
+      reset(initial) {
+        this.x       = Math.random() * W;
+        this.y       = initial ? Math.random() * H : H + 10;
+        this.size    = Math.random() * 1.5 + 0.3;
+        this.speedY  = -(Math.random() * 0.4 + 0.15);
+        this.speedX  = (Math.random() - 0.5) * 0.2;
+        this.opacity = Math.random() * 0.5 + 0.1;
+        this.color   = Math.random() > 0.5 ? '#00e5ff' : '#8b5cf6';
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.y < -10) this.reset(false);
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.opacity;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
     }
 
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-      if (this.y < -10) this.reset(false);
-    }
+    const particles = Array.from({ length: PARTICLE_COUNT }, () => new Particle());
 
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = this.color;
-      ctx.globalAlpha = this.opacity;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-    }
-  }
-
-  particles = Array.from({ length: PARTICLE_COUNT }, () => new Particle());
-
-  // Connection lines
-  function drawLines() {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 100) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = '#00e5ff';
-          ctx.globalAlpha = (1 - dist / 100) * 0.06;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-          ctx.globalAlpha = 1;
+    function drawLines() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx   = particles[i].x - particles[j].x;
+          const dy   = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = '#00e5ff';
+            ctx.globalAlpha = (1 - dist / 100) * 0.06;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+          }
         }
       }
     }
-  }
 
-  function animate() {
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach(p => { p.update(); p.draw(); });
-    drawLines();
-    requestAnimationFrame(animate);
-  }
-  animate();
-})();
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => { p.update(); p.draw(); });
+      drawLines();
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+}
 
 
 /* ──────────────────────────────────
@@ -147,37 +143,53 @@ hoverTargets.forEach(el => {
 const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navMenu   = document.getElementById('navMenu');
+const navOverlay = document.getElementById('navOverlay');
 const navLinks  = document.querySelectorAll('.nav-link');
+const sections  = document.querySelectorAll('section[id]');
 
-// Scroll blur
+// Throttled scroll handler
+let ticking = false;
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      // Navbar scroll state
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      // Active section highlight
+      highlightActiveSection();
+      // Back to top
+      backToTopBtn.classList.toggle('visible', window.scrollY > 400);
+      ticking = false;
+    });
+    ticking = true;
   }
-  highlightActiveSection();
-  toggleBackToTop();
-});
+}, { passive: true });
 
-// Hamburger
+function openMenu() {
+  navMenu.classList.add('open');
+  navOverlay.classList.add('open');
+  hamburger.classList.add('open');
+  hamburger.setAttribute('aria-expanded', true);
+  navOverlay.setAttribute('aria-hidden', false);
+}
+
+function closeMenu() {
+  navMenu.classList.remove('open');
+  navOverlay.classList.remove('open');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', false);
+  navOverlay.setAttribute('aria-hidden', true);
+}
+
 hamburger.addEventListener('click', () => {
-  const isOpen = navMenu.classList.toggle('open');
-  hamburger.classList.toggle('open', isOpen);
-  hamburger.setAttribute('aria-expanded', isOpen);
+  navMenu.classList.contains('open') ? closeMenu() : openMenu();
 });
 
-// Close menu on link click
+// Close when clicking the backdrop
+navOverlay.addEventListener('click', closeMenu);
+
 navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navMenu.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', false);
-  });
+  link.addEventListener('click', () => closeMenu());
 });
-
-// Active section highlight
-const sections = document.querySelectorAll('section[id]');
 
 function highlightActiveSection() {
   let current = '';
@@ -189,90 +201,28 @@ function highlightActiveSection() {
     }
   });
   navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
+    link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
   });
 }
 
 
 /* ──────────────────────────────────
-   5. TYPED TEXT
+   5. AOS INIT
 ────────────────────────────────── */
-const typedEl = document.getElementById('typedText');
-const phrases = [
-  'Web Developer'
-];
-let phraseIdx = 0;
-let charIdx   = 0;
-let isDeleting = false;
-
-function typeLoop() {
-  const current = phrases[phraseIdx];
-
-  if (!isDeleting) {
-    typedEl.textContent = current.substring(0, charIdx + 1);
-    charIdx++;
-    if (charIdx === current.length) {
-      isDeleting = true;
-      setTimeout(typeLoop, 1800);
-      return;
-    }
-  } else {
-    typedEl.textContent = current.substring(0, charIdx - 1);
-    charIdx--;
-    if (charIdx === 0) {
-      isDeleting = false;
-      phraseIdx  = (phraseIdx + 1) % phrases.length;
-    }
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 700,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 60,
+    });
   }
-  setTimeout(typeLoop, isDeleting ? 60 : 90);
-}
-
-setTimeout(typeLoop, 600); // Start after loader
-
-
-/* ──────────────────────────────────
-   6. HERO GSAP ANIMATIONS
-────────────────────────────────── */
-function initHeroAnimations() {
-  if (typeof gsap === 'undefined') return;
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Hero content stagger
-  gsap.from('.hero-badge',         { opacity: 0, y: 30, duration: 0.7, delay: 0.2 });
-  gsap.from('.hero-greeting',      { opacity: 0, y: 30, duration: 0.7, delay: 0.35 });
-  gsap.from('.hero-name',          { opacity: 0, y: 40, duration: 0.8, delay: 0.5 });
-  gsap.from('.hero-role-wrapper',  { opacity: 0, y: 30, duration: 0.7, delay: 0.65 });
-  gsap.from('.hero-desc',          { opacity: 0, y: 30, duration: 0.7, delay: 0.8 });
-  gsap.from('.hero-actions',       { opacity: 0, y: 30, duration: 0.7, delay: 0.95 });
-  gsap.from('.hero-socials',       { opacity: 0, y: 20, duration: 0.7, delay: 1.1 });
-  gsap.from('.hero-visual',        { opacity: 0, x: 60, duration: 0.9, delay: 0.4 });
-  gsap.from('.scroll-indicator',   { opacity: 0, y: 20, duration: 0.6, delay: 1.5 });
-
-  // Floating badges GSAP
-  gsap.to('.badge-react', { y: '-=10', duration: 3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0 });
-  gsap.to('.badge-node',  { y: '-=12', duration: 3.5, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0.8 });
-  gsap.to('.badge-js',    { y: '-=8',  duration: 2.8, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1.6 });
-  gsap.to('.badge-git',   { y: '-=10', duration: 3.2, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0.4 });
-}
-
-
-/* ──────────────────────────────────
-   7. AOS INIT
-────────────────────────────────── */
-AOS.init({
-  duration: 750,
-  easing: 'ease-out-cubic',
-  once: true,
-  offset: 60,
 });
 
 
 /* ──────────────────────────────────
-   8. SKILL BAR ANIMATION
+   6. SKILL BAR ANIMATION
 ────────────────────────────────── */
 const skillFills = document.querySelectorAll('.skill-fill');
 
@@ -289,16 +239,16 @@ skillFills.forEach(fill => skillObserver.observe(fill));
 
 
 /* ──────────────────────────────────
-   9. COUNTER ANIMATION
+   7. COUNTER ANIMATION
 ────────────────────────────────── */
 const statNumbers = document.querySelectorAll('.stat-number[data-count]');
 
 function animateCount(el) {
-  const target = parseInt(el.dataset.count, 10);
-  const dur    = 1800;
-  const step   = 16;
+  const target    = parseInt(el.dataset.count, 10);
+  const dur       = 1600;
+  const step      = 16;
   const increment = target / (dur / step);
-  let current = 0;
+  let current     = 0;
 
   const timer = setInterval(() => {
     current += increment;
@@ -324,7 +274,7 @@ statNumbers.forEach(n => counterObserver.observe(n));
 
 
 /* ──────────────────────────────────
-   10. CONTACT FORM
+   8. CONTACT FORM
 ────────────────────────────────── */
 const contactForm = document.getElementById('contactForm');
 const submitBtn   = document.getElementById('submitBtn');
@@ -333,28 +283,22 @@ const formSuccess = document.getElementById('formSuccess');
 function validateField(id, errorId, condition, msg) {
   const el  = document.getElementById(id);
   const err = document.getElementById(errorId);
-  if (condition(el.value.trim())) {
-    el.classList.remove('error');
-    err.textContent = '';
-    return true;
-  } else {
-    el.classList.add('error');
-    err.textContent = msg;
-    return false;
-  }
+  const valid = condition(el.value.trim());
+  el.classList.toggle('error', !valid);
+  err.textContent = valid ? '' : msg;
+  return valid;
 }
 
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const v1 = validateField('formName',    'nameError',    v => v.length >= 2, 'Please enter your name (min 2 chars).');
+  const v1 = validateField('formName',    'nameError',    v => v.length >= 2,                         'Please enter your name (min 2 chars).');
   const v2 = validateField('formEmail',   'emailError',   v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), 'Please enter a valid email address.');
-  const v3 = validateField('formSubject', 'subjectError', v => v.length >= 3, 'Subject must be at least 3 characters.');
-  const v4 = validateField('formMessage', 'messageError', v => v.length >= 10, 'Message must be at least 10 characters.');
+  const v3 = validateField('formSubject', 'subjectError', v => v.length >= 3,                         'Subject must be at least 3 characters.');
+  const v4 = validateField('formMessage', 'messageError', v => v.length >= 10,                        'Message must be at least 10 characters.');
 
   if (!(v1 && v2 && v3 && v4)) return;
 
-  // Simulate send
   submitBtn.classList.add('loading');
   submitBtn.disabled = true;
 
@@ -367,7 +311,6 @@ contactForm.addEventListener('submit', (e) => {
   }, 2000);
 });
 
-// Live validation
 ['formName', 'formEmail', 'formSubject', 'formMessage'].forEach(id => {
   document.getElementById(id).addEventListener('input', () => {
     document.getElementById(id).classList.remove('error');
@@ -376,17 +319,15 @@ contactForm.addEventListener('submit', (e) => {
 
 
 /* ──────────────────────────────────
-   11. BUTTON RIPPLE EFFECT
+   9. BUTTON RIPPLE EFFECT
 ────────────────────────────────── */
 document.querySelectorAll('.btn-primary').forEach(btn => {
   btn.addEventListener('click', function(e) {
-    const rect  = this.getBoundingClientRect();
+    const rect   = this.getBoundingClientRect();
     const ripple = document.createElement('span');
+    const size   = Math.max(rect.width, rect.height);
     ripple.classList.add('ripple');
-    const size = Math.max(rect.width, rect.height);
-    ripple.style.width  = ripple.style.height = size + 'px';
-    ripple.style.left   = (e.clientX - rect.left - size / 2) + 'px';
-    ripple.style.top    = (e.clientY - rect.top - size / 2) + 'px';
+    ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size / 2}px;top:${e.clientY - rect.top - size / 2}px`;
     this.appendChild(ripple);
     ripple.addEventListener('animationend', () => ripple.remove());
   });
@@ -394,17 +335,9 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
 
 
 /* ──────────────────────────────────
-   12. BACK TO TOP
+   10. BACK TO TOP
 ────────────────────────────────── */
 const backToTopBtn = document.getElementById('backToTop');
-
-function toggleBackToTop() {
-  if (window.scrollY > 400) {
-    backToTopBtn.classList.add('visible');
-  } else {
-    backToTopBtn.classList.remove('visible');
-  }
-}
 
 backToTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -412,13 +345,13 @@ backToTopBtn.addEventListener('click', () => {
 
 
 /* ──────────────────────────────────
-   13. FOOTER YEAR
+   11. FOOTER YEAR
 ────────────────────────────────── */
 document.getElementById('footerYear').textContent = new Date().getFullYear();
 
 
 /* ──────────────────────────────────
-   14. SMOOTH SCROLL (all anchor links)
+   12. SMOOTH SCROLL
 ────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
@@ -432,85 +365,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 
 /* ──────────────────────────────────
-   15. ANIMATED GRADIENT BORDER (skill cards)
+   13. SKILL CARD HOVER GLOW
 ────────────────────────────────── */
-let gradientAngle = 0;
-
-function animateCardBorders() {
-  gradientAngle = (gradientAngle + 0.4) % 360;
-  document.querySelectorAll('.skill-card:hover').forEach(card => {
-    card.style.setProperty(
-      '--grad-angle',
-      `${gradientAngle}deg`
-    );
+if (!isTouch) {
+  document.querySelectorAll('.skill-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', ((e.clientX - rect.left) / rect.width  * 100) + '%');
+      card.style.setProperty('--mouse-y', ((e.clientY - rect.top)  / rect.height * 100) + '%');
+    });
   });
-  requestAnimationFrame(animateCardBorders);
+
+
+/* ──────────────────────────────────
+   14. PROJECT CARD 3D TILT
+────────────────────────────────── */
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect    = card.getBoundingClientRect();
+      const rotateX = ((e.clientY - rect.top  - rect.height / 2) / (rect.height / 2)) * -4;
+      const rotateY = ((e.clientX - rect.left - rect.width  / 2) / (rect.width  / 2)) *  4;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
 }
-animateCardBorders();
 
 
 /* ──────────────────────────────────
-   16. SECTION REVEAL (GSAP Scroll)
-────────────────────────────────── */
-window.addEventListener('load', () => {
-  if (typeof gsap === 'undefined') return;
-
-  // Parallax on hero bg
-  gsap.to('.hero-bg-gradient', {
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-    },
-    y: 100,
-    opacity: 0,
-  });
-});
-
-
-/* ──────────────────────────────────
-   17. SKILL CARD HOVER GLOW
-────────────────────────────────── */
-document.querySelectorAll('.skill-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width)  * 100;
-    const y = ((e.clientY - rect.top)  / rect.height) * 100;
-    card.style.setProperty('--mouse-x', x + '%');
-    card.style.setProperty('--mouse-y', y + '%');
-  });
-});
-
-
-/* ──────────────────────────────────
-   18. PROJECT CARD 3D TILT
-────────────────────────────────── */
-document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect   = card.getBoundingClientRect();
-    const centerX = rect.left + rect.width  / 2;
-    const centerY = rect.top  + rect.height / 2;
-    const rotateX = ((e.clientY - centerY) / (rect.height / 2)) * -4;
-    const rotateY = ((e.clientX - centerX) / (rect.width  / 2)) *  4;
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-  });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-    card.style.transition = 'transform 0.5s ease';
-    setTimeout(() => { card.style.transition = ''; }, 500);
-  });
-});
-
-
-/* ──────────────────────────────────
-   19. FLOATING ICON RESET (resize)
+   15. AOS REFRESH ON RESIZE
 ────────────────────────────────── */
 let resizeTimer;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => {
-    AOS.refresh();
+    if (typeof AOS !== 'undefined') AOS.refresh();
   }, 200);
-});
+}, { passive: true });
