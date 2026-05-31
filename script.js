@@ -273,49 +273,8 @@ const counterObserver = new IntersectionObserver((entries) => {
 statNumbers.forEach(n => counterObserver.observe(n));
 
 
-/* ──────────────────────────────────
-   8. CONTACT FORM
-────────────────────────────────── */
-const contactForm = document.getElementById('contactForm');
-const submitBtn   = document.getElementById('submitBtn');
-const formSuccess = document.getElementById('formSuccess');
 
-function validateField(id, errorId, condition, msg) {
-  const el  = document.getElementById(id);
-  const err = document.getElementById(errorId);
-  const valid = condition(el.value.trim());
-  el.classList.toggle('error', !valid);
-  err.textContent = valid ? '' : msg;
-  return valid;
-}
 
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const v1 = validateField('formName',    'nameError',    v => v.length >= 2,                         'Please enter your name (min 2 chars).');
-  const v2 = validateField('formEmail',   'emailError',   v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), 'Please enter a valid email address.');
-  const v3 = validateField('formSubject', 'subjectError', v => v.length >= 3,                         'Subject must be at least 3 characters.');
-  const v4 = validateField('formMessage', 'messageError', v => v.length >= 10,                        'Message must be at least 10 characters.');
-
-  if (!(v1 && v2 && v3 && v4)) return;
-
-  submitBtn.classList.add('loading');
-  submitBtn.disabled = true;
-
-  setTimeout(() => {
-    submitBtn.classList.remove('loading');
-    submitBtn.disabled = false;
-    contactForm.reset();
-    formSuccess.classList.add('show');
-    setTimeout(() => formSuccess.classList.remove('show'), 5000);
-  }, 2000);
-});
-
-['formName', 'formEmail', 'formSubject', 'formMessage'].forEach(id => {
-  document.getElementById(id).addEventListener('input', () => {
-    document.getElementById(id).classList.remove('error');
-  });
-});
 
 
 /* ──────────────────────────────────
