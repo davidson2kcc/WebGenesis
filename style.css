@@ -1,9 +1,4 @@
-/* ===================================================
-   ALEX RIVERA – PORTFOLIO CSS
-   Premium Dark Theme | Glassmorphism | Cyan & Purple
-=================================================== */
 
-/* ── DESIGN TOKENS ── */
 :root {
   --bg:            #ffffff;
   --bg-2:          #f5f5f7;
@@ -259,7 +254,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-logo {
   display: flex;
   align-items: center;
+  gap: 0.6rem;
   flex-shrink: 0;
+  text-decoration: none;
 }
 .nav-logo-img {
   width: 42px;
@@ -268,11 +265,37 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   object-fit: cover;
   display: block;
   transition: var(--transition);
+  flex-shrink: 0;
 }
-.nav-logo-img:hover {
+.nav-logo:hover .nav-logo-img {
   transform: scale(1.08);
   box-shadow: 0 0 0 2px #000;
 }
+
+/* ── Brand wordmark ── */
+.nav-brand {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+  transition: var(--transition);
+}
+.nav-logo:hover .nav-brand { opacity: 0.85; }
+
+.nav-brand-web {
+  color: #111;
+}
+.nav-brand-genesis {
+  background: linear-gradient(90deg, #00c896, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 
 .nav-menu {
   display: flex;
@@ -584,104 +607,251 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ── ABOUT ── */
 .about { background: var(--bg-2); }
 
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 5rem;
-  align-items: center;
-}
-
-.about-img-frame {
-  position: relative;
-  width: 100%;
-  max-width: 380px;
-  margin: 0 auto;
-}
-.about-img-frame::before {
-  content: '';
-  position: absolute;
-  inset: 5px;
-  border-radius: 50%;
-  background: black;
-  z-index: 0;
-  opacity: 0.7;
-}
-.about-img {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  aspect-ratio: 1/1;
-  filter: grayscale(20%);
-  transition: filter 0.4s;
-  box-shadow: 0 0 40px rgba(0, 229, 255, 0.2), 0 0 80px rgba(139, 92, 246, 0.15);
-}
-.about-img-frame:hover .about-img { filter: grayscale(0); }
-
-.about-img-badge {
-  position: absolute;
-  bottom: -20px; right: -20px;
-  z-index: 2;
-  width: 150px;
-  height: 90px;
-  background-color: #000;
-  border-radius: var(--radius-md);
-  padding: 1rem 1.4rem;
-  text-align: center;
-  box-shadow: 0 8px 30px rgba(0,229,255,0.3);
-}
-.badge-number { display: block; font-family: var(--font-head); font-size: 2rem; font-weight: 900; color: var(--bg); line-height: 1; }
-.badge-label  { display: block; font-size: 0.7rem; font-weight: 700; color: cyan; letter-spacing: 1px; text-transform: uppercase; }
-
-.about-subtitle {
-  font-family: var(--font-head);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-  line-height: 1.3;
-}
-
-.about-text {
+/* Section subtitle */
+.section-subtitle {
   color: var(--text-sec);
-  margin-bottom: 1rem;
-  font-size: 0.97rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  opacity: 0.75;
 }
 
-.about-details { margin: 2rem 0; }
-
-.detail-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.detail-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.8rem;
-}
-.detail-icon {
-  width: 38px; height: 38px;
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: var(--radius-sm);
-  display: grid;
-  place-items: center;
-  color: black;
-  font-size: 0.9rem;
-  flex-shrink: 0;
-}
-.detail-label { display: block; font-size: 0.72rem; color: var(--text-mute); text-transform: uppercase; letter-spacing: 1px; }
-.detail-value { display: block; font-size: 0.88rem; color: var(--white); font-weight: 500; margin-top: 2px; }
-
-.about-stats {
+/* Team Stats row */
+.team-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 1.25rem;
+  margin-bottom: 4rem;
 }
+
+/* ── DEV PROFILE CARDS ── */
+.dev-profiles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.dev-card {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+}
+.dev-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(0,229,255,0.1);
+  border-color: rgba(0,229,255,0.25);
+}
+
+/* Glow blobs */
+.dev-card-glow {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  top: -60px;
+  opacity: 0.25;
+  transition: opacity 0.4s;
+}
+.dev-card:hover .dev-card-glow { opacity: 0.45; }
+.dev-card-glow--cyan   { background: var(--cyan);   left: -60px; }
+.dev-card-glow--purple { background: var(--purple); right: -60px; }
+
+/* Avatar */
+.dev-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.dev-avatar {
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+  filter: grayscale(15%);
+  transition: filter 0.4s;
+}
+.dev-card:hover .dev-avatar { filter: grayscale(0); }
+
+.dev-avatar-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: beige;
+  z-index: 0;
+  animation: ring-spin 6s linear infinite;
+  padding: 3px;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
+}
+.dev-avatar-ring--purple {
+  background: conic-gradient(from 0deg, var(--purple), var(--cyan), var(--purple));
+}
+
+/* Status badge */
+.dev-status {
+  position: absolute;
+  bottom: -4px; right: -8px;
+  z-index: 2;
+  background: #111;
+  border: 1.5px solid rgba(0,255,157,0.4);
+  border-radius: var(--radius-full);
+  padding: 0.25rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #00ff9d;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+.dev-status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #00ff9d;
+  box-shadow: 0 0 6px #00ff9d;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Dev info block */
+.dev-info {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dev-name {
+  font-family: var(--font-head);
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.dev-role {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dev-bio {
+  color: var(--text-sec);
+  font-size: 0.9rem;
+  line-height: 1.75;
+  max-width: 340px;
+  margin: 0;
+}
+
+/* Detail items */
+.dev-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: 100%;
+  text-align: left;
+  padding: 1.1rem 1.25rem;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+}
+.dev-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.85rem;
+  color: var(--text-sec);
+}
+.dev-detail-item i {
+  width: 18px;
+  text-align: center;
+  color: black;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Tech tags */
+.dev-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  justify-content: center;
+}
+.dev-tag {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: var(--cyan-dim);
+  border: 1px solid rgba(0,229,255,0.3);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #009975;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+}
+.dev-tag:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,229,255,0.2); }
+.dev-tag--purple {
+  background: var(--purple-dim);
+  border-color: rgba(139,92,246,0.3);
+  color: var(--purple);
+}
+.dev-tag--purple:hover { box-shadow: 0 4px 12px rgba(139,92,246,0.2); }
+
+/* Social buttons */
+.dev-socials {
+  display: flex;
+  gap: 0.65rem;
+}
+.dev-social-btn {
+  width: 40px; height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-sec);
+  font-size: 0.95rem;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+.dev-social-btn:hover {
+  background: var(--cyan-dim);
+  border-color: var(--cyan);
+  color: var(--cyan);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-cyan);
+}
+.dev-social-btn--purple:hover {
+  background: var(--purple-dim);
+  border-color: var(--purple);
+  color: var(--purple);
+  box-shadow: var(--shadow-purple);
+}
+
+
+
+/* ── STAT CARDS ── */
 .stat-card {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
@@ -702,7 +872,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: opacity 0.35s;
 }
 .stat-card:hover::before { opacity: 1; }
-.stat-card:hover { border-color: rgba(0,229,255,0.3); transform: translateY(-4px); box-shadow: var(--shadow-card); }
+.stat-card:hover { border-color: rgba(0,229,255,0.3); transform: translateY(-4px); box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
 
 .stat-number {
   display: block;
@@ -711,12 +881,139 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 900;
   color: #000000;
   line-height: 1;
+  position: relative;
+  z-index: 1;
 }
-.stat-plus { font-size: 1.4rem; font-weight: 900; color: var(--cyan); }
-.stat-label { display: block; font-size: 0.7rem; color: var(--text-sec); margin-top: 0.4rem; letter-spacing: 0.5px; }
+.stat-plus { font-size: 1.4rem; font-weight: 900; color: var(--cyan); position: relative; z-index: 1; }
+.stat-label { display: block; font-size: 0.7rem; color: var(--text-sec); margin-top: 0.4rem; letter-spacing: 0.5px; position: relative; z-index: 1; }
 
 /* ── SKILLS ── */
 .skills { background: var(--bg-3); }
+
+/* Two-developer wrapper */
+.dev-skills-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Individual skill panel */
+.dev-skill-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 2rem 1.75rem 2.5rem;
+  backdrop-filter: blur(14px);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.dev-skill-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  border-radius: var(--radius-full) var(--radius-full) 0 0;
+}
+#skillPanelDev2::before {
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+}
+.dev-skill-panel:hover {
+  border-color: rgba(0,229,255,0.2);
+  box-shadow: 0 20px 60px rgba(0,229,255,0.07);
+}
+#skillPanelDev2:hover {
+  border-color: rgba(139,92,246,0.25);
+  box-shadow: 0 20px 60px rgba(139,92,246,0.08);
+}
+
+/* Panel header — avatar + name/role */
+.dev-skill-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+  background: rgba(0,229,255,0.06);
+  border: 1px solid rgba(0,229,255,0.15);
+}
+.dev-skill-header--purple {
+  background: rgba(139,92,246,0.07);
+  border-color: rgba(139,92,246,0.18);
+}
+
+.dev-skill-avatar {
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  background: var(--cyan-dim);
+  border: 2px solid rgba(0,229,255,0.4);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.dev-skill-avatar--purple {
+  background: var(--purple-dim);
+  border-color: rgba(139,92,246,0.4);
+}
+.dev-skill-avatar-img {
+  width: 34px !important;
+  height: 34px !important;
+  object-fit: contain;
+  display: block;
+  opacity: 0.75;
+}
+
+.dev-skill-name {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 0.2rem;
+  line-height: 1.2;
+}
+.dev-skill-role {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dev-skill-role--purple {
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Purple variant for category icon */
+.category-icon--purple {
+  background: linear-gradient(135deg, var(--purple-dim), rgba(139,92,246,0.05));
+  border-color: rgba(139,92,246,0.25);
+  color: var(--purple);
+}
+
+/* Purple skill card variant */
+.skill-card--purple::before {
+  background: linear-gradient(135deg, var(--purple), var(--cyan));
+}
+.skill-card--purple:hover { box-shadow: 0 20px 50px rgba(139,92,246,0.12); }
+
+/* Purple skill fill */
+.skill-fill--purple {
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+}
+
+/* Slightly tighter grid inside panels */
+.dev-skill-panel .skills-grid {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+.dev-skill-panel .skill-category { margin-bottom: 2rem; }
 
 .skill-category { margin-bottom: 3rem; }
 .category-header {
@@ -1173,6 +1470,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   
   .about-grid { gap: 3rem; }
   .about-stats { grid-template-columns: repeat(2, 1fr); }
+  .team-stats { grid-template-columns: repeat(2, 1fr); }
+  .dev-skills-wrapper { gap: 1.5rem; }
   .contact-grid { gap: 2.5rem; }
 }
 
@@ -1221,12 +1520,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .badge-js     { top: 55%; left: 0; }
   .badge-git    { top: 5%; right: 0; }
 
-  /* About */
+  /* About / Team */
   .about-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
   .about-img-badge { right: -10px; }
   .detail-row { grid-template-columns: 1fr; }
-  .detail-item {  text-align: left; }
+  .detail-item { text-align: left; }
   .about-stats { grid-template-columns: repeat(2,1fr); }
+  .dev-profiles-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  .team-stats { grid-template-columns: repeat(2, 1fr); }
+
+  /* Skills */
+  .dev-skills-wrapper { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
+  .dev-skill-panel .skills-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 
   /* Contact */
   .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -1245,9 +1550,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .ring-2 { width: 210px; height: 210px; }
   .ring-3 { width: 240px; height: 240px; }
   .about-stats { grid-template-columns: repeat(2,1fr); }
+  .team-stats { grid-template-columns: repeat(2,1fr); }
+  .dev-card { padding: 2rem 1.25rem 1.5rem; }
+  .dev-skill-panel { padding: 1.5rem 1.25rem 2rem; }
+  .dev-skill-panel .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-form-wrap { padding: 1.5rem; }
   .skills-grid { grid-template-columns: repeat(auto-fill, minmax(145px,1fr)); }
-  }
+}
 
 /* ── AOS OVERRIDE ── */
 [data-aos] { pointer-events: none; }
