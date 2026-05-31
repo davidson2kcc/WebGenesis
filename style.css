@@ -1406,7 +1406,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .nav-link { padding: 0.85rem 1.5rem; font-size: 1rem; width: 100%; border-radius: var(--radius-md); }
   .nav-cta { display: none; }
-  .hamburger { display: flex; }
+  .hamburger { display: content; }
 
   .hero-badge, .hero-actions, .hero-socials { justify-content: center; }
   .hero-desc { margin: 0 auto 2.5rem; }
