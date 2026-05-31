@@ -1398,7 +1398,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     backdrop-filter: blur(2px);
     animation: fade-overlay 0.3s ease;
   }
-  .nav-overlay.open { display: block; }
+  .nav-overlay.open { display: content; }
   @keyframes fade-overlay {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -1406,7 +1406,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .nav-link { padding: 0.85rem 1.5rem; font-size: 1rem; width: 100%; border-radius: var(--radius-md); }
   .nav-cta { display: none; }
-  .hamburger { display: content; }
+  .hamburger { display: flex; }
 
   .hero-badge, .hero-actions, .hero-socials { justify-content: center; }
   .hero-desc { margin: 0 auto 2.5rem; }
