@@ -1,6 +1,43 @@
 'use strict';
 
 /* ──────────────────────────────────
+   0. THEME TOGGLE (Light / Dark)
+────────────────────────────────── */
+(function initTheme() {
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('themeToggle');
+  const icon      = document.getElementById('themeIcon');
+
+  // Set the correct icon on load
+  function updateIcon() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+  }
+  updateIcon();
+
+  toggleBtn.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const newTheme = isDark ? 'light' : 'dark';
+
+    // Spin animation
+    toggleBtn.classList.add('animating');
+
+    setTimeout(() => {
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon();
+      toggleBtn.classList.remove('animating');
+    }, 300);
+  });
+});
+
+/* ──────────────────────────────────
    1. LOADER
 ────────────────────────────────── */
 const loader = document.getElementById('loader');
