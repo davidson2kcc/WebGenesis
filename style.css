@@ -218,6 +218,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 1;
 }
 
+/* Skip layout/paint for off-screen sections until they near the viewport.
+   Reduces scroll jank; contain-intrinsic-size keeps scrollbar/position stable. */
+#skills, #projects, #pricing, #contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 1200px;
+}
+
 /* ── SECTION HEADER ── */
 .section-header { text-align: center; margin-bottom: 4rem; }
 
@@ -660,6 +667,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 1;
   filter: grayscale(15%);
   transition: filter 0.4s;
+  background: var(--bg-3);
 }
 .dev-card:hover .dev-avatar { filter: grayscale(0); }
 
@@ -1113,6 +1121,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
   overflow: hidden;
   width: 100%;
+  background: var(--bg-2);
 }
 .project-card--wide .project-img-wrap { aspect-ratio: auto; }
 
