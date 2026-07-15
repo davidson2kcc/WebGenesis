@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // Apply saved theme BEFORE first paint to prevent light->dark flash on load
+    (function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+  </script>
   <meta name="description" content="WebGenesis â€“ Origin of Great Websites. Building premium web experiences with React, Node.js, and modern technologies. Available for freelance and full-time opportunities." />
   <meta name="keywords" content="Full Stack Developer, Web Developer, React, Node.js, JavaScript, Portfolio" />
   <meta name="author" content="WebGenesis" />
@@ -25,10 +29,7 @@
   <link rel="canonical" href="https://webgenesis.dev/" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="footer logo.png" />
-
-  <!-- Preload critical assets -->
-  <link rel="preload" href="footer logo.jpg" as="image" />
+  <link rel="icon" href="new webgenesis.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -69,7 +70,7 @@
   <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a href="#home" class="nav-logo" id="navLogo" aria-label="WebGenesis home">
-        <img src="footer logo.png" alt="WebGenesis Logo" class="nav-logo-img" width="42" height="42" fetchpriority="high" loading="eager" />
+        <img src="new webgenesis.png" alt="WebGenesis Logo" class="nav-logo-img" width="42" height="42" fetchpriority="high" loading="eager" />
         <span class="nav-brand">
           <span class="nav-brand-web">Web</span><span class="nav-brand-genesis">Genesis</span>
         </span>
@@ -783,7 +784,7 @@
     <div class="footer-container">
       <div class="footer-top">
         <a href="#home" class="footer-logo" id="footer-logo" aria-label="Back to top">
-          <img src="footer logo.png" alt="WebGenesis Logo" class="footer-logo-img" width="42" height="42" loading="lazy" />
+          <img src="new webgenesis.png" alt="WebGenesis Logo" class="footer-logo-img" width="42" height="42" loading="lazy" />
         </a>
 
         <p class="footer-tagline">Origin of great websites.</p>
@@ -796,7 +797,7 @@
       <div class="footer-divider"></div>
       <div class="footer-bottom">
         <p class="footer-copy">
-          &copy; <span id="footerYear"></span> WebGenesis. Crafted with <span class="heart">&#10084;</span> &amp; a lot of â˜•
+          &copy; <span id="footerYear"></span> WebGenesis. Crafted with <span class="heart">&#10084;</span> &amp; and fueled by<span class="cup">&#9749;</span>
         </p>
         <nav class="footer-nav" aria-label="Footer navigation">
           <a href="#home" class="footer-link">Home</a>
@@ -818,4 +819,4 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script src="script.js" defer></script>
 </body>
-</html>
+</html> 
