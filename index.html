@@ -29,20 +29,20 @@
   <link rel="canonical" href="https://webgenesis.dev/" />
 
   <!-- Favicon -->
-  <link rel="icon" href="new webgenesis.png" />
+  <link rel="icon" type="image/jpeg" href="new webgenesis.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Icons (async â€“ non-render-blocking) -->
+  <!-- Icons (async – non-render-blocking) -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
 
-  <!-- AOS (async) -->
-  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /></noscript>
+  <!-- AOS (self-hosted, no external CDN round-trip) -->
+  <link rel="stylesheet" href="aos.css" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
@@ -99,7 +99,7 @@
 
     <div class="hero-container">
       <!-- Left Content -->
-      <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+      <div class="hero-content">
         
         
         <h1 class="hero-name">We  build  websites  that  grow  your  business </h1>
@@ -797,7 +797,7 @@
       <div class="footer-divider"></div>
       <div class="footer-bottom">
         <p class="footer-copy">
-          &copy; <span id="footerYear"></span> WebGenesis. Crafted with <span class="heart">&#10084;</span> &amp; and fueled by<span class="cup">&#9749;</span>
+          &copy; <span id="footerYear"></span> WebGenesis. Crafted with <span class="heart">&#10084;</span> &amp; fueled by <span class="cup">&#9749;</span>
         </p>
         <nav class="footer-nav" aria-label="Footer navigation">
           <a href="#home" class="footer-link">Home</a>
@@ -816,7 +816,7 @@
   </button>
 
   <!-- ========== SCRIPTS ========== -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script src="aos.js" defer></script>
   <script src="script.js" defer></script>
 </body>
-</html> 
+</html>
