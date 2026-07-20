@@ -2209,7 +2209,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: #111;
 }
 .nav-brand-genesis {
-  background: linear-gradient(90deg, #00c896, #8b5cf6);
+  background-color: black;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
