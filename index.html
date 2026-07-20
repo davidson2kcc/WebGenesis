@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>
-    // Apply saved theme BEFORE first paint to prevent light->dark flash on load
-    (function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
-  </script>
-  <meta name="description" content="WebGenesis â€“ Origin of Great Websites. Building premium web experiences with React, Node.js, and modern technologies. Available for freelance and full-time opportunities." />
+
+  <meta name="description"
+    content="WebGenesis â€“ Origin of Great Websites. Building premium web experiences with React, Node.js, and modern technologies. Available for freelance and full-time opportunities." />
   <meta name="keywords" content="Full Stack Developer, Web Developer, React, Node.js, JavaScript, Portfolio" />
   <meta name="author" content="WebGenesis" />
   <meta name="robots" content="index, follow" />
@@ -16,13 +15,15 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://webgenesis.dev/" />
   <meta property="og:title" content="WebGenesis | Premium Web Development Agency" />
-  <meta property="og:description" content="Building premium web experiences with React, Node.js, and modern technologies." />
+  <meta property="og:description"
+    content="Building premium web experiences with React, Node.js, and modern technologies." />
   <meta property="og:image" content="profile.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="WebGenesis | Premium Web Development Agency" />
-  <meta name="twitter:description" content="Building premium web experiences with React, Node.js, and modern technologies." />
+  <meta name="twitter:description"
+    content="Building premium web experiences with React, Node.js, and modern technologies." />
   <meta name="twitter:image" content="profile.png" />
 
   <title>WebGenesis | Premium Web Development Agency</title>
@@ -34,12 +35,17 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet" />
 
   <!-- Icons (async – non-render-blocking) -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </noscript>
 
   <!-- AOS (self-hosted, no external CDN round-trip) -->
   <link rel="stylesheet" href="aos.css" />
@@ -47,6 +53,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <!-- ========== CURSOR ========== -->
@@ -59,7 +66,7 @@
   <!-- ========== LOADING SCREEN ========== -->
   <div class="loader" id="loader">
     <div class="loader-inner">
-      
+
     </div>
   </div>
 
@@ -70,9 +77,10 @@
   <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a href="#home" class="nav-logo" id="navLogo" aria-label="WebGenesis home">
-        <img src="new webgenesis.png" alt="WebGenesis Logo" class="nav-logo-img" width="42" height="42" fetchpriority="high" loading="eager" />
+        <img src="new webgenesis.png" alt="WebGenesis Logo" class="nav-logo-img" width="42" height="42"
+          fetchpriority="high" loading="eager" />
         <span class="nav-brand">
-          <span class="nav-brand-web">Web</span><span class="nav-brand-genesis">Genesis</span>
+          <span class="nav-brand-web">WebGenesis</span>
         </span>
       </a>
       <ul class="nav-menu" id="navMenu" role="list">
@@ -83,10 +91,9 @@
         <li><a href="#pricing" class="nav-link" id="navPricing">Pricing</a></li>
         <li><a href="#contact" class="nav-link" id="navContact">Contact</a></li>
       </ul>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=header" class="nav-cta" id="navCta">Book a Call</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-        <i class="fas fa-moon" id="themeIcon"></i>
-      </button>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=header"
+        class="nav-cta" id="navCta">Book a Call</a>
+
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -100,9 +107,9 @@
     <div class="hero-container">
       <!-- Left Content -->
       <div class="hero-content">
-        
-        
-        <h1 class="hero-name">We  build  websites  that  grow  your  business </h1>
+
+
+        <h1 class="hero-name">We build websites that grow your business </h1>
 
         <p class="hero-desc">
           Crafting pixel-perfect, high-performance web experiences that blend
@@ -110,24 +117,27 @@
           digital realities.
         </p>
         <div class="hero-actions">
-          
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=header" class="btn-secondary" id="heroContactBtn">
+
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=header"
+            class="btn-secondary" id="heroContactBtn">
             <i class="fas fa-paper-plane"></i> Let's Talk
           </a>
         </div>
         <div class="hero-socials">
-          <a href="https://github.com/davidson2kcc/WebGenesis" target="_blank" rel="noopener noreferrer" class="social-icon" id="heroGithub" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          
-          <a href="mailto:webgenesis34@gmail.com" class="social-icon" id="heroEmail" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/davidson2kcc/WebGenesis" target="_blank" rel="noopener noreferrer"
+            class="social-icon" id="heroGithub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+
+          <a href="mailto:webgenesis34@gmail.com" class="social-icon" id="heroEmail" aria-label="Email"><i
+              class="fas fa-envelope"></i></a>
         </div>
       </div>
 
       <!-- Right Content -->
-      
+
     </div>
 
     <!-- Scroll Indicator -->
-    
+
   </section>
 
   <!-- ========== ABOUT SECTION ========== -->
@@ -166,7 +176,8 @@
         <div class="dev-card" id="devCard1" data-aos="fade-up" data-aos-delay="100">
           <div class="dev-card-glow dev-card-glow--cyan"></div>
           <div class="dev-avatar-wrap">
-            <img src="circle-user-round.svg" alt="Praveenkumar A â€“ Full Stack Developer" class="dev-avatar" width="140" height="140" loading="lazy" />
+            <img src="circle-user-round.svg" alt="Praveenkumar A â€“ Full Stack Developer" class="dev-avatar"
+              width="140" height="140" loading="lazy" />
             <div class="dev-avatar-ring"></div>
             <div class="dev-status">
               <span class="dev-status-dot"></span> Available
@@ -176,7 +187,8 @@
             <h3 class="dev-name">Praveenkumar A</h3>
             <span class="dev-role">Full Stack Developer</span>
             <p class="dev-bio">
-              Passionate about crafting responsive, user-first web experiences. Specialises in React &amp; Node.js with a keen eye for design and performance optimisation.
+              Passionate about crafting responsive, user-first web experiences. Specialises in React &amp; Node.js with
+              a keen eye for design and performance optimisation.
             </p>
             <div class="dev-details">
               <div class="dev-detail-item">
@@ -200,11 +212,13 @@
               <span class="dev-tag">CSS3</span>
             </div>
             <div class="dev-socials">
-              <a href="https://github.com/davidson2kcc/WebGenesis" target="_blank" rel="noopener noreferrer" class="dev-social-btn" id="dev1Github" aria-label="Praveenkumar GitHub">
+              <a href="https://github.com/davidson2kcc/WebGenesis" target="_blank" rel="noopener noreferrer"
+                class="dev-social-btn" id="dev1Github" aria-label="Praveenkumar GitHub">
                 <i class="fab fa-github"></i>
               </a>
-              
-              <a href="mailto:webgenesis34@gmail.com" class="dev-social-btn" id="dev1Email" aria-label="Praveenkumar Email">
+
+              <a href="mailto:webgenesis34@gmail.com" class="dev-social-btn" id="dev1Email"
+                aria-label="Praveenkumar Email">
                 <i class="fas fa-envelope"></i>
               </a>
             </div>
@@ -215,7 +229,8 @@
         <div class="dev-card" id="devCard2" data-aos="fade-up" data-aos-delay="200">
           <div class="dev-card-glow dev-card-glow--purple"></div>
           <div class="dev-avatar-wrap">
-            <img src="circle-user-round.svg" alt="Dharshan A â€“ Frontend Developer" class="dev-avatar" width="140" height="140" loading="lazy" />
+            <img src="circle-user-round.svg" alt="Dharshan A â€“ Frontend Developer" class="dev-avatar" width="140"
+              height="140" loading="lazy" />
             <div class="dev-avatar-ring dev-avatar-ring--purple"></div>
             <div class="dev-status">
               <span class="dev-status-dot"></span> Available
@@ -225,7 +240,8 @@
             <h3 class="dev-name">Dharshan A</h3>
             <span class="dev-role">Full Stack Developer</span>
             <p class="dev-bio">
-              Creative frontend specialist with a passion for pixel-perfect UIs and smooth animations. Expert in Next.js, GSAP and transforming Figma designs into living web experiences.
+              Creative frontend specialist with a passion for pixel-perfect UIs and smooth animations. Expert in
+              Next.js, GSAP and transforming Figma designs into living web experiences.
             </p>
             <div class="dev-details">
               <div class="dev-detail-item">
@@ -249,12 +265,14 @@
               <span class="dev-tag dev-tag--purple">HTML5</span>
             </div>
             <div class="dev-socials">
-              <a href="https://github.com/davidson2kcc/WebGenesis" target="_blank" rel="noopener noreferrer" class="dev-social-btn dev-social-btn--purple" id="dev2Github" aria-label="Aravind GitHub">
+              <a href="https://github.com/davidson2kcc/WebGenesis" target="_blank" rel="noopener noreferrer"
+                class="dev-social-btn dev-social-btn--purple" id="dev2Github" aria-label="Aravind GitHub">
                 <i class="fab fa-github"></i>
               </a>
-              
-              
-              <a href="mailto:webgenesis34@gmail.com" class="dev-social-btn dev-social-btn--purple" id="dev2Email" aria-label="Dharshan Email">
+
+
+              <a href="mailto:webgenesis34@gmail.com" class="dev-social-btn dev-social-btn--purple" id="dev2Email"
+                aria-label="Dharshan Email">
                 <i class="fas fa-envelope"></i>
               </a>
             </div>
@@ -282,7 +300,8 @@
           <!-- Panel Header -->
           <div class="dev-skill-header dev-skill-header--cyan">
             <div class="dev-skill-avatar">
-              <img src="circle-user-round.svg" alt="Praveenkumar A" class="dev-skill-avatar-img" width="34" height="34" loading="lazy" />
+              <img src="circle-user-round.svg" alt="Praveenkumar A" class="dev-skill-avatar-img" width="34" height="34"
+                loading="lazy" />
             </div>
             <div>
               <h3 class="dev-skill-name">Praveenkumar A</h3>
@@ -300,25 +319,33 @@
               <div class="skill-card" id="p1SkillHtml">
                 <div class="skill-icon"><i class="fab fa-html5"></i></div>
                 <h5 class="skill-name">HTML5</h5>
-                <div class="skill-bar"><div class="skill-fill" style="--w:95%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w:95%"></div>
+                </div>
                 <span class="skill-pct">95%</span>
               </div>
               <div class="skill-card" id="p1SkillCss">
                 <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
                 <h5 class="skill-name">CSS3</h5>
-                <div class="skill-bar"><div class="skill-fill" style="--w:92%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w:92%"></div>
+                </div>
                 <span class="skill-pct">92%</span>
               </div>
               <div class="skill-card" id="p1SkillJs">
                 <div class="skill-icon"><i class="fab fa-js"></i></div>
                 <h5 class="skill-name">JavaScript</h5>
-                <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w:90%"></div>
+                </div>
                 <span class="skill-pct">90%</span>
               </div>
               <div class="skill-card" id="p1SkillReact">
                 <div class="skill-icon"><i class="fab fa-react"></i></div>
                 <h5 class="skill-name">React</h5>
-                <div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w:88%"></div>
+                </div>
                 <span class="skill-pct">88%</span>
               </div>
             </div>
@@ -334,25 +361,33 @@
               <div class="skill-card" id="p1SkillNode">
                 <div class="skill-icon"><i class="fab fa-node-js"></i></div>
                 <h5 class="skill-name">Node.js</h5>
-                <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w:85%"></div>
+                </div>
                 <span class="skill-pct">85%</span>
               </div>
               <div class="skill-card" id="p1SkillExpress">
                 <div class="skill-icon"><i class="fas fa-bolt"></i></div>
                 <h5 class="skill-name">Express</h5>
-                <div class="skill-bar"><div class="skill-fill" style="--w:83%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w:83%"></div>
+                </div>
                 <span class="skill-pct">83%</span>
               </div>
               <div class="skill-card" id="p1SkillMongo">
                 <div class="skill-icon"><i class="fas fa-leaf"></i></div>
                 <h5 class="skill-name">MongoDB</h5>
-                <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w:80%"></div>
+                </div>
                 <span class="skill-pct">80%</span>
               </div>
               <div class="skill-card" id="p1SkillMysql">
                 <div class="skill-icon"><i class="fas fa-table"></i></div>
                 <h5 class="skill-name">MySQL</h5>
-                <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w:75%"></div>
+                </div>
                 <span class="skill-pct">75%</span>
               </div>
             </div>
@@ -368,19 +403,25 @@
               <div class="skill-card" id="p1SkillGit">
                 <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
                 <h5 class="skill-name">Git</h5>
-                <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w:90%"></div>
+                </div>
                 <span class="skill-pct">90%</span>
               </div>
               <div class="skill-card" id="p1SkillGithub">
                 <div class="skill-icon"><i class="fab fa-github"></i></div>
                 <h5 class="skill-name">GitHub</h5>
-                <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w:90%"></div>
+                </div>
                 <span class="skill-pct">90%</span>
               </div>
               <div class="skill-card" id="p1SkillVercel">
                 <div class="skill-icon"><i class="fas fa-rocket"></i></div>
                 <h5 class="skill-name">Vercel</h5>
-                <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="--w:85%"></div>
+                </div>
                 <span class="skill-pct">85%</span>
               </div>
             </div>
@@ -392,7 +433,8 @@
           <!-- Panel Header -->
           <div class="dev-skill-header dev-skill-header--purple">
             <div class="dev-skill-avatar dev-skill-avatar--purple">
-              <img src="circle-user-round.svg" alt="Dharshan A" class="dev-skill-avatar-img" width="34" height="34" loading="lazy" />
+              <img src="circle-user-round.svg" alt="Dharshan A" class="dev-skill-avatar-img" width="34" height="34"
+                loading="lazy" />
             </div>
             <div>
               <h3 class="dev-skill-name">Dharshan A</h3>
@@ -410,25 +452,33 @@
               <div class="skill-card skill-card--purple" id="p2SkillNext">
                 <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
                 <h5 class="skill-name">Next.js</h5>
-                <div class="skill-bar"><div class="skill-fill skill-fill--purple" style="--w:88%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill skill-fill--purple" style="--w:88%"></div>
+                </div>
                 <span class="skill-pct">88%</span>
               </div>
               <div class="skill-card skill-card--purple" id="p2SkillTs">
                 <div class="skill-icon"><i class="fab fa-js"></i></div>
                 <h5 class="skill-name">TypeScript</h5>
-                <div class="skill-bar"><div class="skill-fill skill-fill--purple" style="--w:84%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill skill-fill--purple" style="--w:84%"></div>
+                </div>
                 <span class="skill-pct">84%</span>
               </div>
               <div class="skill-card skill-card--purple" id="p2SkillHtml">
                 <div class="skill-icon"><i class="fab fa-html5"></i></div>
                 <h5 class="skill-name">HTML5</h5>
-                <div class="skill-bar"><div class="skill-fill skill-fill--purple" style="--w:95%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill skill-fill--purple" style="--w:95%"></div>
+                </div>
                 <span class="skill-pct">95%</span>
               </div>
               <div class="skill-card skill-card--purple" id="p2SkillCss">
                 <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
                 <h5 class="skill-name">CSS3</h5>
-                <div class="skill-bar"><div class="skill-fill skill-fill--purple" style="--w:92%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill skill-fill--purple" style="--w:92%"></div>
+                </div>
                 <span class="skill-pct">92%</span>
               </div>
             </div>
@@ -444,19 +494,25 @@
               <div class="skill-card skill-card--purple" id="p2SkillGsap">
                 <div class="skill-icon"><i class="fas fa-film"></i></div>
                 <h5 class="skill-name">GSAP</h5>
-                <div class="skill-bar"><div class="skill-fill skill-fill--purple" style="--w:87%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill skill-fill--purple" style="--w:87%"></div>
+                </div>
                 <span class="skill-pct">87%</span>
               </div>
               <div class="skill-card skill-card--purple" id="p2SkillFigma">
                 <div class="skill-icon"><i class="fab fa-figma"></i></div>
                 <h5 class="skill-name">Figma</h5>
-                <div class="skill-bar"><div class="skill-fill skill-fill--purple" style="--w:85%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill skill-fill--purple" style="--w:85%"></div>
+                </div>
                 <span class="skill-pct">85%</span>
               </div>
               <div class="skill-card skill-card--purple" id="p2SkillJs">
                 <div class="skill-icon"><i class="fab fa-js"></i></div>
                 <h5 class="skill-name">JavaScript</h5>
-                <div class="skill-bar"><div class="skill-fill skill-fill--purple" style="--w:90%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill skill-fill--purple" style="--w:90%"></div>
+                </div>
                 <span class="skill-pct">90%</span>
               </div>
             </div>
@@ -472,19 +528,25 @@
               <div class="skill-card skill-card--purple" id="p2SkillNode">
                 <div class="skill-icon"><i class="fab fa-node-js"></i></div>
                 <h5 class="skill-name">Node.js</h5>
-                <div class="skill-bar"><div class="skill-fill skill-fill--purple" style="--w:80%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill skill-fill--purple" style="--w:80%"></div>
+                </div>
                 <span class="skill-pct">80%</span>
               </div>
               <div class="skill-card skill-card--purple" id="p2SkillGit">
                 <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
                 <h5 class="skill-name">Git</h5>
-                <div class="skill-bar"><div class="skill-fill skill-fill--purple" style="--w:88%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill skill-fill--purple" style="--w:88%"></div>
+                </div>
                 <span class="skill-pct">88%</span>
               </div>
               <div class="skill-card skill-card--purple" id="p2SkillNetlify">
                 <div class="skill-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                 <h5 class="skill-name">Netlify</h5>
-                <div class="skill-bar"><div class="skill-fill skill-fill--purple" style="--w:82%"></div></div>
+                <div class="skill-bar">
+                  <div class="skill-fill skill-fill--purple" style="--w:82%"></div>
+                </div>
                 <span class="skill-pct">82%</span>
               </div>
             </div>
@@ -499,7 +561,7 @@
   <section class="projects section" id="projects" aria-label="Projects section">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        
+
         <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
         <p class="project-text">Selected work. From local businesses to international platforms.</p>
         <div class="section-line"></div>
@@ -510,13 +572,16 @@
         <!-- Project 1 -->
         <article class="project-card" id="projectGym" data-aos="fade-up" data-aos-delay="100">
           <div class="project-img-wrap">
-            <img src="project-gym.png" alt="Gym Website Project Preview" class="project-img" width="600" height="400" loading="lazy" />
+            <img src="project-gym.png" alt="Gym Website Project Preview" class="project-img" width="600" height="400"
+              loading="lazy" />
             <div class="project-overlay">
               <div class="project-links">
-                <a href="https://nitrro.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-btn" id="gymLiveBtn" aria-label="Gym website live demo">
+                <a href="https://nitrro.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-btn"
+                  id="gymLiveBtn" aria-label="Gym website live demo">
                   <i class="fas fa-external-link-alt"></i> Live Demo
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-ghost" id="gymGithubBtn" aria-label="Gym website GitHub">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-ghost" id="gymGithubBtn"
+                  aria-label="Gym website GitHub">
                   <i class="fab fa-github"></i> GitHub
                 </a>
               </div>
@@ -525,7 +590,8 @@
           <div class="project-info">
             <div class="project-number">01</div>
             <h3 class="project-title">Gym Website</h3>
-            <p class="project-desc">A high-energy gym website with membership plans, class schedules, trainer profiles, and an interactive BMI calculator. Fully animated with smooth transitions.</p>
+            <p class="project-desc">A high-energy gym website with membership plans, class schedules, trainer profiles,
+              and an interactive BMI calculator. Fully animated with smooth transitions.</p>
             <div class="project-tags">
               <span class="tag">HTML5</span>
               <span class="tag">CSS3</span>
@@ -538,13 +604,16 @@
         <!-- Project 2 -->
         <article class="project-card" id="projectConstruction" data-aos="fade-up" data-aos-delay="150">
           <div class="project-img-wrap">
-            <img src="project-construction.jpg" alt="Construction Company Website Preview" class="project-img" width="600" height="400" loading="lazy" />
+            <img src="project-construction.jpg" alt="Construction Company Website Preview" class="project-img"
+              width="600" height="400" loading="lazy" />
             <div class="project-overlay">
               <div class="project-links">
-                <a href="https://buildcraftpro.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-btn" id="constructionLiveBtn" aria-label="Construction website live demo">
+                <a href="https://buildcraftpro.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-btn"
+                  id="constructionLiveBtn" aria-label="Construction website live demo">
                   <i class="fas fa-external-link-alt"></i> Live Demo
                 </a>
-                <a href="https://github.com/davidson2kcc/build_craft_pro" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-ghost" id="constructionGithubBtn" aria-label="Construction website GitHub">
+                <a href="https://github.com/davidson2kcc/build_craft_pro" target="_blank" rel="noopener noreferrer"
+                  class="proj-btn proj-btn-ghost" id="constructionGithubBtn" aria-label="Construction website GitHub">
                   <i class="fab fa-github"></i> GitHub
                 </a>
               </div>
@@ -553,7 +622,8 @@
           <div class="project-info">
             <div class="project-number">02</div>
             <h3 class="project-title">BuildCraftPro</h3>
-            <p class="project-desc">A corporate construction company site featuring project showcases, service listings, team profiles, and an integrated contact system with form validation.</p>
+            <p class="project-desc">A corporate construction company site featuring project showcases, service listings,
+              team profiles, and an integrated contact system with form validation.</p>
             <div class="project-tags">
               <span class="tag">React</span>
               <span class="tag">Node.js</span>
@@ -563,19 +633,21 @@
           </div>
         </article>
 
-        <!-- Project 3 -->
-        
 
-        <!-- Project 4 -->
+
+        <!-- Project 3 -->
         <article class="project-card" id="projectPortfolio" data-aos="fade-up" data-aos-delay="250">
           <div class="project-img-wrap">
-            <img src="project-portfolio.jpg" alt="Portfolio Website Preview" class="project-img" width="600" height="400" loading="lazy" />
+            <img src="project-portfolio.jpg" alt="Portfolio Website Preview" class="project-img" width="600"
+              height="400" loading="lazy" />
             <div class="project-overlay">
               <div class="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer" class="proj-btn" id="portfolioLiveBtn" aria-label="Portfolio live demo">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="proj-btn" id="portfolioLiveBtn"
+                  aria-label="Portfolio live demo">
                   <i class="fas fa-external-link-alt"></i> Live Demo
                 </a>
-                <a href="https://github.com/davidson2kcc/WebGenesis/" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-ghost" id="portfolioGithubBtn" aria-label="Portfolio GitHub">
+                <a href="https://github.com/davidson2kcc/WebGenesis/" target="_blank" rel="noopener noreferrer"
+                  class="proj-btn proj-btn-ghost" id="portfolioGithubBtn" aria-label="Portfolio GitHub">
                   <i class="fab fa-github"></i> GitHub
                 </a>
               </div>
@@ -584,7 +656,8 @@
           <div class="project-info">
             <div class="project-number">03</div>
             <h3 class="project-title">Portfolio Website</h3>
-            <p class="project-desc">A premium personal portfolio featuring particle animations, glassmorphism design, GSAP animations, fully responsive layout and perfect Lighthouse scores.</p>
+            <p class="project-desc">A premium personal portfolio featuring particle animations, glassmorphism design,
+              GSAP animations, fully responsive layout and perfect Lighthouse scores.</p>
             <div class="project-tags">
               <span class="tag">HTML5</span>
               <span class="tag">CSS3</span>
@@ -594,8 +667,135 @@
           </div>
         </article>
 
+
+
+        <!-- Project 4 -->
+        <article class="project-card" id="project4" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-img-wrap">
+            <div class="project-img project-img--placeholder"
+              style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);min-height:220px;">
+              <div style="text-align:center;opacity:0.5;">
+                <i class="fas fa-code" style="font-size:3rem;color:#a78bfa;display:block;margin-bottom:0.75rem;"></i>
+                <span style="font-size:0.85rem;color:#94a3b8;letter-spacing:0.1em;text-transform:uppercase;">Coming
+                  Soon</span>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="proj-btn" id="project4LiveBtn" aria-label="Project 4 live demo">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+                <a href="#" class="proj-btn proj-btn-ghost" id="project4GithubBtn" aria-label="Project 4 GitHub">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-number">04</div>
+            <h3 class="project-title">Project Title</h3>
+            <p class="project-desc">Project description coming soon. This slot is reserved for an upcoming project.</p>
+            <div class="project-tags">
+              <span class="tag">TBD</span>
+            </div>
+          </div>
+        </article>
+
         <!-- Project 5 -->
-        
+        <article class="project-card" id="project5" data-aos="fade-up" data-aos-delay="350">
+          <div class="project-img-wrap">
+            <div class="project-img project-img--placeholder"
+              style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);min-height:220px;">
+              <div style="text-align:center;opacity:0.5;">
+                <i class="fas fa-code" style="font-size:3rem;color:#a78bfa;display:block;margin-bottom:0.75rem;"></i>
+                <span style="font-size:0.85rem;color:#94a3b8;letter-spacing:0.1em;text-transform:uppercase;">Coming
+                  Soon</span>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="proj-btn" id="project5LiveBtn" aria-label="Project 5 live demo">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+                <a href="#" class="proj-btn proj-btn-ghost" id="project5GithubBtn" aria-label="Project 5 GitHub">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-number">05</div>
+            <h3 class="project-title">Project Title</h3>
+            <p class="project-desc">Project description coming soon. This slot is reserved for an upcoming project.</p>
+            <div class="project-tags">
+              <span class="tag">TBD</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="project-card" id="project6" data-aos="fade-up" data-aos-delay="400">
+          <div class="project-img-wrap">
+            <div class="project-img project-img--placeholder"
+              style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);min-height:220px;">
+              <div style="text-align:center;opacity:0.5;">
+                <i class="fas fa-code" style="font-size:3rem;color:#a78bfa;display:block;margin-bottom:0.75rem;"></i>
+                <span style="font-size:0.85rem;color:#94a3b8;letter-spacing:0.1em;text-transform:uppercase;">Coming
+                  Soon</span>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="proj-btn" id="project6LiveBtn" aria-label="Project 6 live demo">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+                <a href="#" class="proj-btn proj-btn-ghost" id="project6GithubBtn" aria-label="Project 6 GitHub">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-number">06</div>
+            <h3 class="project-title">Project Title</h3>
+            <p class="project-desc">Project description coming soon. This slot is reserved for an upcoming project.</p>
+            <div class="project-tags">
+              <span class="tag">TBD</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 7 -->
+        <article class="project-card" id="project7" data-aos="fade-up" data-aos-delay="450">
+          <div class="project-img-wrap">
+            <div class="project-img project-img--placeholder"
+              style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);min-height:220px;">
+              <div style="text-align:center;opacity:0.5;">
+                <i class="fas fa-code" style="font-size:3rem;color:#a78bfa;display:block;margin-bottom:0.75rem;"></i>
+                <span style="font-size:0.85rem;color:#94a3b8;letter-spacing:0.1em;text-transform:uppercase;">Coming
+                  Soon</span>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="proj-btn" id="project7LiveBtn" aria-label="Project 7 live demo">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+                <a href="#" class="proj-btn proj-btn-ghost" id="project7GithubBtn" aria-label="Project 7 GitHub">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-number">07</div>
+            <h3 class="project-title">Project Title</h3>
+            <p class="project-desc">Project description coming soon. This slot is reserved for an upcoming project.</p>
+            <div class="project-tags">
+              <span class="tag">TBD</span>
+            </div>
+          </div>
+        </article>
 
       </div>
     </div>
@@ -625,7 +825,8 @@
               <li><i class="fas fa-check" aria-hidden="true"></i> Automatic emails</li>
               <li><i class="fas fa-check" aria-hidden="true"></i> Mobile optimized</li>
             </ul>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=header" class="pricing-cta pricing-cta--green" id="pricingLandingCta">Get Started &rarr;</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=header"
+              class="pricing-cta pricing-cta--green" id="pricingLandingCta">Get Started &rarr;</a>
           </div>
         </div>
 
@@ -643,7 +844,8 @@
               <li><i class="fas fa-check" aria-hidden="true"></i> Automatic emails</li>
               <li><i class="fas fa-check" aria-hidden="true"></i> Mobile optimized</li>
             </ul>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=header" class="pricing-cta pricing-cta--blue" id="pricingStandardCta">Get Started &rarr;</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=header"
+              class="pricing-cta pricing-cta--blue" id="pricingStandardCta">Get Started &rarr;</a>
           </div>
         </div>
 
@@ -662,7 +864,8 @@
               <li><i class="fas fa-check" aria-hidden="true"></i> SEO optimization</li>
               <li><i class="fas fa-check" aria-hidden="true"></i> Priority support</li>
             </ul>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=header" class="pricing-cta pricing-cta--purple" id="pricingPremiumCta">Get Started &rarr;</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=header"
+              class="pricing-cta pricing-cta--purple" id="pricingPremiumCta">Get Started &rarr;</a>
           </div>
         </div>
 
@@ -714,11 +917,13 @@
           <div class="contact-socials">
             <span class="socials-label">Follow Us</span>
             <div class="socials-row">
-              <a href="https://github.com/davidson2kcc/WebGenesis" target="_blank" rel="noopener noreferrer" class="social-pill" id="contactGithub" aria-label="GitHub profile">
+              <a href="https://github.com/davidson2kcc/WebGenesis" target="_blank" rel="noopener noreferrer"
+                class="social-pill" id="contactGithub" aria-label="GitHub profile">
                 <i class="fab fa-github"></i> GitHub
               </a>
-              <a href="mailto:webgenesis34@gmail.com" class="social-icon" id="contactSocialEmail" aria-label="Email"><i class="fas fa-envelope"></i></a>
-              
+              <a href="mailto:webgenesis34@gmail.com" class="social-icon" id="contactSocialEmail" aria-label="Email"><i
+                  class="fas fa-envelope"></i></a>
+
             </div>
           </div>
         </div>
@@ -735,7 +940,8 @@
             </div>
 
             <h3 class="gform-heading">Ready to Start Your Project?</h3>
-            <p class="gform-sub">Fill out our quick form and we&apos;ll get back to you within 24 hours with a custom plan tailored to your needs.</p>
+            <p class="gform-sub">Fill out our quick form and we&apos;ll get back to you within 24 hours with a custom
+              plan tailored to your needs.</p>
 
             <ul class="gform-checklist">
               <li><i class="fas fa-check-circle"></i> Project type &amp; requirements</li>
@@ -746,25 +952,15 @@
 
             <div class="gform-actions">
               <!-- ⚠️ Replace YOUR_GOOGLE_FORM_URL with your actual Google Form share link -->
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=publish-editor"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="gform-btn gform-btn--primary"
-                id="bookCallBtn"
-                aria-label="Book a call via Google Form"
-              >
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform"
+                target="_blank" rel="noopener noreferrer" class="gform-btn gform-btn--primary" id="bookCallBtn"
+                aria-label="Book a call via Google Form">
                 <i class="fas fa-calendar-check"></i> Book a Call
               </a>
 
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform?usp=publish-editor"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="gform-btn gform-btn--ghost"
-                id="hireUsBtn"
-                aria-label="Hire us via Google Form"
-              >
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0BOZAWN4wefwzbexMZWiLxMJ45FeR1KKfebGkUDWiCf-chA/viewform"
+                target="_blank" rel="noopener noreferrer" class="gform-btn gform-btn--ghost" id="hireUsBtn"
+                aria-label="Hire us via Google Form">
                 <i class="fas fa-handshake"></i> Hire Us
               </a>
             </div>
@@ -784,20 +980,24 @@
     <div class="footer-container">
       <div class="footer-top">
         <a href="#home" class="footer-logo" id="footer-logo" aria-label="Back to top">
-          <img src="new webgenesis.png" alt="WebGenesis Logo" class="footer-logo-img" width="42" height="42" loading="lazy" />
+          <img src="new webgenesis.png" alt="WebGenesis Logo" class="footer-logo-img" width="42" height="42"
+            loading="lazy" />
         </a>
 
         <p class="footer-tagline">Origin of great websites.</p>
         <div class="footer-socials">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" id="footerGithub" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          
-          <a href="mailto:webgenesis34@gmail.com" class="footer-social-icon" id="footerEmail" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon"
+            id="footerGithub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+
+          <a href="mailto:webgenesis34@gmail.com" class="footer-social-icon" id="footerEmail" aria-label="Email"><i
+              class="fas fa-envelope"></i></a>
         </div>
       </div>
       <div class="footer-divider"></div>
       <div class="footer-bottom">
         <p class="footer-copy">
-          &copy; <span id="footerYear"></span> WebGenesis. Crafted with <span class="heart">&#10084;</span> &amp; fueled by <span class="cup">&#9749;</span>
+          &copy; <span id="footerYear"></span> WebGenesis. Crafted with <span class="heart">&#10084;</span> &amp; fueled
+          by <span class="cup">&#9749;</span>
         </p>
         <nav class="footer-nav" aria-label="Footer navigation">
           <a href="#home" class="footer-link">Home</a>
@@ -819,4 +1019,5 @@
   <script src="aos.js" defer></script>
   <script src="script.js" defer></script>
 </body>
+
 </html>
