@@ -1,6 +1,6 @@
 /* ===================================================
-   ALEX RIVERA – PORTFOLIO CSS
-   Premium Dark Theme | Glassmorphism | Cyan & Purple
+   WEBGENESIS – PORTFOLIO CSS
+   Light Theme | Glassmorphism | Cyan & Purple
 =================================================== */
 
 /* ── DESIGN TOKENS ── */
@@ -41,92 +41,7 @@
   --shadow-card:   0 8px 40px rgba(0,0,0,0.5);
 }
 
-/* ── DARK THEME ── */
-[data-theme="dark"] {
-  --bg:            #0a0a0f;
-  --bg-2:          #111118;
-  --bg-3:          #18181f;
-  --card-bg:       rgba(255,255,255,0.03);
-  --card-border:   rgba(255,255,255,0.08);
-  --glass-bg:      rgba(255,255,255,0.04);
-  --glass-border:  rgba(255,255,255,0.10);
 
-  --white:         #ffffff;
-  --text-sec:      #b0b0c0;
-  --text-mute:     #7a7a90;
-
-  --shadow-card:   0 8px 40px rgba(0,0,0,0.6);
-
-  color-scheme: dark;
-}
-
-/* Dark theme overrides for hardcoded colors */
-[data-theme="dark"] .gradient-text          { color: #ffffff; }
-[data-theme="dark"] .nav-brand-web          { color: #f0f0f0; }
-[data-theme="dark"] .nav-link               { color: #d0d0d8; }
-[data-theme="dark"] .nav-cta                { background-color: #ffffff; color: #000; border-color: #ffffff; }
-[data-theme="dark"] .btn-secondary          { background: rgba(255,255,255,0.08); color: #f0f0f0; }
-[data-theme="dark"] .hero-role-typed        { color: #ffffff; }
-[data-theme="dark"] .stat-number            { color: #ffffff; }
-[data-theme="dark"] .skill-icon             { color: #ffffff; }
-[data-theme="dark"] .loader-logo            { color: #ffffff; }
-[data-theme="dark"] .footer-logo            { color: #ffffff; }
-[data-theme="dark"] .dev-detail-item i      { color: #d0d0d8; }
-[data-theme="dark"] .dev-status             { background: #111; }
-[data-theme="dark"] .dev-details            { background: rgba(255,255,255,0.04); }
-[data-theme="dark"] .dev-tag                { color: #00ff9d; }
-[data-theme="dark"] .contact-card-icon      { background: rgba(255,255,255,0.06); color: #d0d0d8; }
-[data-theme="dark"] .proj-btn               { background: linear-gradient(135deg, var(--cyan), var(--purple)); color: #fff; }
-[data-theme="dark"] .proj-btn-ghost         { background: transparent; color: #fff; border-color: rgba(255,255,255,0.3); }
-[data-theme="dark"] .pricing-card           { background: #15152a; border-color: rgba(139,92,246,0.2); }
-[data-theme="dark"] .pricing-plan-name      { color: #f0f0f0; }
-[data-theme="dark"] .pricing-plan-desc      { color: #9a9ab0; }
-[data-theme="dark"] .pricing-amount-label   { color: #7a7a90; }
-[data-theme="dark"] .pricing-price          { color: #ffffff; }
-[data-theme="dark"] .pricing-features li    { color: #c0c0d0; }
-[data-theme="dark"] .pricing-card--popular  { border-color: rgba(37,99,235,0.4); box-shadow: 0 8px 36px rgba(37,99,235,0.2); }
-[data-theme="dark"] .nav-logo:hover .nav-logo-img { box-shadow: 0 0 0 2px #333; }
-
-/* ── THEME TOGGLE BUTTON ── */
-.theme-toggle {
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-sm);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  color: var(--white);
-  font-size: 1.05rem;
-  cursor: pointer;
-  transition: var(--transition);
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
-}
-.theme-toggle:hover {
-  background: var(--cyan-dim);
-  border-color: var(--cyan);
-  color: var(--cyan);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-cyan);
-}
-.theme-toggle i {
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-}
-.theme-toggle.animating i {
-  transform: rotate(360deg) scale(0);
-  opacity: 0;
-}
-
-/* Show toggle on mobile too */
-@media (max-width: 768px) {
-  .theme-toggle {
-    order: -1;
-    margin-left: auto;
-    margin-right: 0.5rem;
-  }
-}
 
 /* ── RESET & BASE ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -368,12 +283,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-brand-web {
   color: #111;
 }
-.nav-brand-genesis {
-  background-color:black ;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+
 
 
 .nav-menu {
